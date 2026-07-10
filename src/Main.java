@@ -1,13 +1,79 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
+public class Main {
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Library library = new Library();
+
+        boolean running = true;
+
+        while (running) {
+            printMenu();
+            System.out.print("Enter your choice: ");
+            String input = scanner.nextLine().trim();
+            int choice;
+
+            try {
+                choice = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number from the menu.\n");
+                continue;
+            }
+
+            switch (choice) {
+                case 1: {
+                    System.out.print("Enter book title: ");
+                    String title = scanner.nextLine().trim();
+                    System.out.print("Enter book author: ");
+                    String author = scanner.nextLine().trim();
+                    library.addBook(new Book(title, author));
+                    break;
+                }
+                case 2: {
+                    library.listBooks();
+                    break;
+                }
+                case 3: {
+                    System.out.print("Enter the title of the book to borrow: ");
+                    String title = scanner.nextLine().trim();
+                    library.borrowBook(title);
+                    break;
+                }
+                case 4: {
+                    System.out.print("Enter the title of the book to return: ");
+                    String title = scanner.nextLine().trim();
+                    library.returnBook(title);
+                    break;
+                }
+                case 5: {
+                    System.out.print("Enter the title of the book to search: ");
+                    String title = scanner.nextLine().trim();
+                    library.searchBook(title);
+                    break;
+                }
+                case 0: {
+                    System.out.println("Goodbye! Thank you for using the Library Information System.");
+                    running = false;
+                    break;
+                }
+                default: {
+                    System.out.println("Invalid choice. Please select a valid menu option.\n");
+                }
+            }
+
+            System.out.println(); // blank line for readability between iterations
+        }
+
+        scanner.close();
+    }
+
+    private static void printMenu() {
+        System.out.println("Library Information System");
+        System.out.println("1. Add a book");
+        System.out.println("2. List all books");
+        System.out.println("3. Borrow a book");
+        System.out.println("4. Return a book");
+        System.out.println("5. Search a book");
+        System.out.println("0. Exit");
     }
 }
