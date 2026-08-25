@@ -1,3 +1,5 @@
+package atm;
+
 public class SavingsAccount extends Account {
 
     public static final double MAINTAINING_BALANCE = 500.0;

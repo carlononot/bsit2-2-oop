@@ -1,3 +1,4 @@
+package atm;
 public class CheckingAccount extends Account {
 
     private double overdraftLimit;   // example: 1000.0

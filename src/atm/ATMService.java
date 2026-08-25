@@ -1,3 +1,5 @@
+package atm;
+
 public class ATMService {
 
     // ---------- OVERLOADING: same name, different parameter lists ----------
@@ -30,7 +32,7 @@ public class ATMService {
         account = new SavingsAccount("XX-000", "Carlo Nonot", 0, 0);
         System.out.println("Inside the method  : " + account);
         //account is a local copy siya for reference kung asa niya gi pasa ang invocation.
-        //reassigning it here only points this local copy somewhere new
+        //and by reassigning it here only points this local copy somewhere new.
         //caller's original variable still points to the original object.
     }
 

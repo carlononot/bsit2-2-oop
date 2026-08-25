@@ -1,3 +1,5 @@
+package atm;
+
 public abstract class Account {
 
     // TODO 1: change these three fields to private

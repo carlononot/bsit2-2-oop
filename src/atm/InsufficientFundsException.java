@@ -1,3 +1,5 @@
+package atm;
+
 public class InsufficientFundsException extends Exception {
 
     private final double shortfall;
